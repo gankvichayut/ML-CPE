@@ -13,11 +13,11 @@
 ---
 
 ## 📁 โครงสร้างไฟล์ใน Repository
-├── house-prices-data/
-│   ├── train.csv                    # ชุดข้อมูลสำหรับฝึกฝน (Dataset หลัก)
-│   └── data_description.txt         # คำอธิบายคอลัมน์ของข้อมูล
-├── LAB2_Data Preprocessing.ipynb    # Jupyter Notebook แสดงกระบวนการและโค้ดทั้งหมด
-└── README.md                        # เอกสารอธิบายโครงการ
+├── house-prices-data/  
+│   ├── train.csv                    # ชุดข้อมูลสำหรับฝึกฝน (Dataset หลัก)  
+│   └── data_description.txt         # คำอธิบายคอลัมน์ของข้อมูล  
+├── LAB2_Data Preprocessing.ipynb    # Jupyter Notebook แสดงกระบวนการและโค้ดทั้งหมด  
+└── README.md                        # เอกสารอธิบายโครงการ  
 
 
 ---
