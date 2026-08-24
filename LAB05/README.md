@@ -3,9 +3,10 @@
 Build a simple SVM pipeline using Python, including image data loading, preprocessing, feature scaling, model training, evaluation, and prediction.
 
 # Data
-
-Kaggle Cats and Dogs Dataset: https://www.kaggle.com/datasets/bhavikjikadara/dog-and-cat-classification-dataset
-
+on-dataset
+Kaggle House Prices - Advanced Regression Techniques Dataset: 
+   https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/data
+   
 # Structure
 
 ```text
