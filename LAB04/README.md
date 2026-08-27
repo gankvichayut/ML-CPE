@@ -14,7 +14,7 @@
 ---
 
 ## 📁 โครงสร้างไฟล์ใน Repository
-```
+
 ML-04-KNN/
 │
 ├── classification/
@@ -43,7 +43,6 @@ ML-04-KNN/
 │
 ├── requirements.txt               # รายการไลบรารีที่จำเป็น
 └── README.md                      # เอกสารอธิบายโครงการ
-```
 
 ---
 
