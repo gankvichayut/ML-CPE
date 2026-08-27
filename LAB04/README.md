@@ -15,34 +15,36 @@
 
 ## 📁 โครงสร้างไฟล์ใน Repository
 
-ML-04-KNN/  
-│  
-├── classification/  
-│   ├── dataset_heart.csv          # ชุดข้อมูลโรคหัวใจสำหรับงาน Classification  
-│   ├── main.py                    # สคริปต์หลักสำหรับเทรนและประเมินผล KNN  
-│   ├── data_loader.py             # โหลดข้อมูล แยก Train/Val/Test และทำ Standardization  
-│   ├── knn_tf.py                  # คลาสโมเดล KNN บน TensorFlow  
-│   ├── evaluate.py                # ฟังก์ชันวัดผล กราฟ k-curve และ Confusion Matrix  
-│   └── outputs/  
-│       ├── 01_k_curve.png         # กราฟเปรียบเทียบค่า k กับ Validation Accuracy  
-│       ├── 02_confusion_matrix.png # ภาพ Confusion Matrix บน Test Set  
-│       └── predictions.csv        # ผลการทำนายเทียบกับค่าจริง  
-│  
-├── clustering/  
-│   ├── dataset_heart.csv          # ชุดข้อมูลโรคหัวใจสำหรับงาน Clustering  
-│   ├── main.py                    # สคริปต์หลักสำหรับรัน K-Means และจับคู่กลุ่มด้วย KNN  
-│   ├── data_loader.py             # โหลดข้อมูลและทำ Standardization เฉพาะ Features  
-│   ├── kmeans_tf.py               # คลาส K-Means Clustering บน TensorFlow  
-│   ├── knn_tools.py               # คลาส KNN สำหรับกำหนด Cluster ให้ข้อมูลใหม่  
-│   ├── visualize.py               # ฟังก์ชันพล็อต Elbow Curve และ Scatter Plot  
-│   └── outputs/  
-│       ├── 01_elbow.png           # กราฟ Elbow Method หาค่า k ที่เหมาะสม  
-│       ├── 02_clusters.png        # กราฟกระจายตัวของ Cluster (Age vs Max Heart Rate)  
-│       ├── cluster_summary.csv    # สรุปค่าเฉลี่ยสถิติของแต่ละ Cluster  
-│       └── clustered_heart_data.csv # ข้อมูลพร้อมระบุ Cluster ของผู้ป่วยแต่ละคน  
-│  
-├── requirements.txt               # รายการไลบรารีที่จำเป็น  
-└── README.md                      # เอกสารอธิบายโครงการ  
+```
+ML-04-KNN/
+│
+├── classification/
+│   ├── dataset_heart.csv          # ชุดข้อมูลโรคหัวใจสำหรับงาน Classification
+│   ├── main.py                    # สคริปต์หลักสำหรับเทรนและประเมินผล KNN
+│   ├── data_loader.py             # โหลดข้อมูล แยก Train/Val/Test และทำ Standardization
+│   ├── knn_tf.py                  # คลาสโมเดล KNN บน TensorFlow
+│   ├── evaluate.py                # ฟังก์ชันวัดผล กราฟ k-curve และ Confusion Matrix
+│   └── outputs/
+│       ├── 01_k_curve.png         # กราฟเปรียบเทียบค่า k กับ Validation Accuracy
+│       ├── 02_confusion_matrix.png # ภาพ Confusion Matrix บน Test Set
+│       └── predictions.csv        # ผลการทำนายเทียบกับค่าจริง
+│
+├── clustering/
+│   ├── dataset_heart.csv          # ชุดข้อมูลโรคหัวใจสำหรับงาน Clustering
+│   ├── main.py                    # สคริปต์หลักสำหรับรัน K-Means และจับคู่กลุ่มด้วย KNN
+│   ├── data_loader.py             # โหลดข้อมูลและทำ Standardization เฉพาะ Features
+│   ├── kmeans_tf.py               # คลาส K-Means Clustering บน TensorFlow
+│   ├── knn_tools.py               # คลาส KNN สำหรับกำหนด Cluster ให้ข้อมูลใหม่
+│   ├── visualize.py               # ฟังก์ชันพล็อต Elbow Curve และ Scatter Plot
+│   └── outputs/
+│       ├── 01_elbow.png           # กราฟ Elbow Method หาค่า k ที่เหมาะสม
+│       ├── 02_clusters.png        # กราฟกระจายตัวของ Cluster (Age vs Max Heart Rate)
+│       ├── cluster_summary.csv    # สรุปค่าเฉลี่ยสถิติของแต่ละ Cluster
+│       └── clustered_heart_data.csv # ข้อมูลพร้อมระบุ Cluster ของผู้ป่วยแต่ละคน
+│
+├── requirements.txt               # รายการไลบรารีที่จำเป็น
+└── README.md                      # เอกสารอธิบายโครงการ
+```
 
 ---
 
