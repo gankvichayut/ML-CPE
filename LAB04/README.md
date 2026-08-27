@@ -14,7 +14,7 @@
 ---
 
 ## 📁 โครงสร้างไฟล์ใน Repository
-```text
+```
 ML-04-KNN/
 │
 ├── classification/
