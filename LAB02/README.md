@@ -43,6 +43,6 @@ LAB02/
 ---
 
 ## 👤 Prepared by
-* **Full Name:** Wichayut Kaewwiset
+* **Full Name:** Vichayut Kaewwiset
 * **Student ID:** 116710400582-8
 * **Department:** Computer Engineering
