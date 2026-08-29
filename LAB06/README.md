@@ -1,7 +1,7 @@
 # LAB 6: Neural Network (MLP) for Image Recognition (Rock-Paper-Scissors Dataset)
 
-โครงการนี้เป็นส่วนหนึ่งของวิชา **Machine Learning (04-624-201)**
-ภาควิชาวิศวกรรมคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเทคโนโลยีราชมงคลธัญบุรี
+This project is part of the **Machine Learning (04-624-201)** course  
+Department of Computer Engineering, Faculty of Engineering, Rajamangala University of Technology Thanyaburi
 
 ---
 
@@ -11,59 +11,59 @@ Kaggle Dataset: https://www.kaggle.com/datasets/drgfreeman/rockpaperscissors/
 
 ---
 
-## วัตถุประสงค์
-1. เพื่อให้นักศึกษาเข้าใจสถาปัตยกรรมและหลักการทำงานของ Artificial Neural Network (Multilayer Perceptron: MLP) ในการจำแนกประเภทรูปภาพ (Image Classification)
-2. เพื่อฝึกฝนกระบวนการเตรียมและประมวลผลข้อมูลภาพ (Computer Vision Preprocessing) เช่น การปรับขนาดภาพ (Resize), การแปลงปริภูมิสี (BGR to RGB) และการจัดเก็บโครงสร้าง Tensor สำหรับโมเดล Deep Learning
-3. เพื่อสร้างและฝึกสอนโครงข่ายประสาทเทียมด้วย TensorFlow / Keras โดยประยุกต์ใช้เทคนิค Batch Normalization, Dropout เพื่อป้องกัน Overfitting และ Early Stopping กับ ReduceLROnPlateau ในการปรับอัตราการเรียนรู้
-4. เพื่อศึกษาและวิเคราะห์เส้นโค้งการเรียนรู้ (Learning Curves: Loss & Accuracy) ทั้งบน Training Set และ Validation Set เพื่อประเมินภาวะ Overfitting/Underfitting
-5. เพื่อประเมินประสิทธิภาพของแบบจำลองด้วยค่า Accuracy, Classification Report (Precision, Recall, F1-Score), Confusion Matrix และทดสอบการพยากรณ์ผลภาพตัวอย่างแบบสุ่มพร้อมระดับความเชื่อมั่น (Confidence Score)
+## Objectives
+1. To enable students to understand the architecture and working principles of Artificial Neural Networks (Multilayer Perceptron: MLP) in image classification tasks.
+2. To practice computer vision data preparation and preprocessing pipelines, including image resizing, color space conversion (BGR to RGB), and tensor structuring for deep learning models.
+3. To construct and train neural network models using TensorFlow / Keras by implementing Batch Normalization, Dropout layers for regularization, and training callbacks (Early Stopping and ReduceLROnPlateau).
+4. To analyze learning curves (Loss & Accuracy) across both Training and Validation sets to evaluate overfitting and underfitting behaviors.
+5. To evaluate model performance using Accuracy, Classification Report (Precision, Recall, F1-Score), and Confusion Matrix, and to perform sample image inference with confidence score visualization.
 
 ---
 
-## โครงสร้างไฟล์ใน Repository
+## Repository Structure
 ```text
 LAB06/
 │
-├── rps-cv-images/                                 # โฟลเดอร์ชุดข้อมูลภาพเป่ายิ้งฉุบ (Raw Image Dataset) (ดาวโหลดจากลิงก์ Kaggle)
-│   ├── paper/                                     # ภาพคลาสกระดาษ (Paper)
-│   ├── rock/                                      # ภาพคลาสค้อน (Rock)
-│   ├── scissors/                                  # ภาพคลาสกรรไกร (Scissors)
-│   └── README_rpc-cv-images.txt                   # คำอธิบายชุดข้อมูลภาพ
+├── rps-cv-images/                 # Raw image dataset directory
+│   ├── paper/                     # Paper class images
+│   ├── rock/                      # Rock class images
+│   ├── scissors/                  # Scissors class images
+│   └── README_rpc-cv-images.txt   # Dataset description file
 │
 ├── mini-project/
-│   ├── data_loader.py                             # สคริปต์โหลดรูปภาพจากโฟลเดอร์คลาสและแปลงเป็นอาร์เรย์
-│   ├── preprocessing.py                           # ฟังก์ชัน Resize ภาพ (64x64) และจัดการรูปแบบสี RGB
-│   ├── split_data.py                              # แบ่งข้อมูล Train (70%), Validation (10%), Test (20%) แบบ Stratified
-│   ├── nn_model.py                                # สถาปัตยกรรมโมเดล Sequential MLP, การ Rescaling และกระบวนการ Fit
-│   ├── evaluate.py                                # ฟังก์ชันคำนวณ Metrics, วาด Confusion Matrix และกราฟ History Curves
-│   ├── main.py                                    # สคริปต์หลักรัน Pipeline การเทรนและบันทึกโมเดลทั้งหมด
-│   ├── test_nn.py                                 # สคริปต์สุ่มรูปภาพ 4 ภาพมาทดสอบพยากรณ์และแสดงผลกริด 2x2
+│   ├── data_loader.py             # Script to load images from directories and convert to arrays
+│   ├── preprocessing.py           # Functions for image resizing (64x64) and RGB conversion
+│   ├── split_data.py              # Splits dataset into Train (70%), Validation (10%), and Test (20%)
+│   ├── nn_model.py                # Sequential MLP model architecture, rescaling, and training logic
+│   ├── evaluate.py                # Evaluation metrics, Confusion Matrix, and training history plotting
+│   ├── main.py                    # Main pipeline execution and model serialization script
+│   ├── test_nn.py                 # Script to randomly sample 4 test images and display 2x2 prediction grid
 │   │
-│   └── outputs/                                   # โฟลเดอร์เก็บผลลัพธ์และโมเดลที่บันทึก
-│       ├── classes.json                           # รายชื่อคลาส ['paper', 'rock', 'scissors']
-│       ├── history.json                           # ประวัติค่า Loss และ Accuracy ในแต่ละ Epoch
-│       ├── features.npy                           # ข้อมูล Features ทั้งหมดในรูป NumPy Array
-│       ├── labels.npy                             # ข้อมูล Labels ทั้งหมด
-│       ├── X_train.npy / X_val.npy / X_test.npy   # ข้อมูลแบ่งชุดรูปภาพ
-│       ├── y_train.npy / y_val.npy / y_test.npy   # ข้อมูลแบ่งชุด Label
-│       ├── nn_model.keras                         # โมเดล Neural Network ที่บันทึกในรูปแบบ Keras
-│       ├── confusion_matrix.png                   # ภาพแผนภูมิความร้อน Confusion Matrix
-│       ├── training_history.png                   # กราฟเปรียบเทียบ Training & Validation (Loss / Accuracy)
-│       └── prediction_sample.png                  # ผลการสุ่มทดสอบพยากรณ์ภาพ 4 ตัวอย่าง
+│   └── outputs/                   # Directory containing saved outputs and model artifacts
+│       ├── classes.json           # Target class names ['paper', 'rock', 'scissors']
+│       ├── history.json           # Per-epoch training loss and accuracy logs
+│       ├── features.npy           # Full feature array in NumPy format
+│       ├── labels.npy             # Full label array
+│       ├── X_train.npy / X_val.npy / X_test.npy # Partitioned image arrays
+│       ├── y_train.npy / y_val.npy / y_test.npy # Partitioned target label arrays
+│       ├── nn_model.keras         # Serialized Neural Network model in Keras format
+│       ├── confusion_matrix.png   # Confusion Matrix heatmap image
+│       ├── training_history.png   # Loss and Accuracy curves across training and validation
+│       └── prediction_sample.png  # Visualized 2x2 sample prediction output
 │
-└── README.md                                      # เอกสารสรุปและอธิบายผลการทดลอง
+└── README.md                      # Experiment summary and project documentation
 ```
 
 ---
 
-## ผลลัพธ์และข้อสรุป (Results & Insights)
-* **ประสิทธิภาพของการ Regularization:** การเพิ่มเลเยอร์ BatchNormalization และ Dropout ช่วยควบคุมไม่ให้โครงข่ายประสาทขนาดใหญ่เกิดปัญหา Overfitting บนชุดข้อมูลภาพที่มีมิติสูง ($12,288$ ฟีเจอร์)
-* **บทบาทของ Validation Set & Early Stopping:** การติดตามผลด้วย Validation Set ร่วมกับการใช้ Early Stopping ช่วยให้โมเดลหยุดการทำงานที่จุดที่ดีที่สุด พร้อมกู้คืนค่าน้ำหนัก (Weights) ที่ให้ผล Generalization บนข้อมูลใหม่ได้อย่างแม่นยำ
-* **ความแม่นยำในการจำแนกท่ามือ (RPS):** แบบจำลอง Fully-Connected Neural Network สามารถแยกแยะความแตกต่างของลักษณะท่ามือเป่ายิ้งฉุบทั้ง 3 คลาสได้อย่างมีนัยสำคัญ และสามารถให้ค่าความเชื่อมั่นที่แม่นยำในการทดสอบตัวอย่างใหม่
+## Results & Insights
+* **Regularization Effectiveness:** Incorporating Batch Normalization and Dropout layers successfully prevented the high-dimensional Multilayer Perceptron ($12,288$ features) from overfitting on the training set.
+* **Role of Validation Set & Early Stopping:** Continuous validation monitoring paired with Early Stopping ensured that training halted at the optimal generalization point while restoring the best model weights.
+* **Hand Gesture Classification Accuracy:** The Fully-Connected Neural Network accurately learned discriminative visual patterns among the three gesture classes, delivering high confidence predictions during test set inference.
 
 ---
 
-## จัดทำโดย
-* **ชื่อ-นามสกุล:** วิชยุตม์ แก้ววิเศษ
-* **รหัสนักศึกษา:** 116710400582-8
-* **ภาควิชา:** วิศวกรรมคอมพิวเตอร์
+## Prepared by
+* **Full Name:** Vichayut Kaewwiset
+* **Student ID:** 116710400582-8
+* **Department:** Computer Engineering
