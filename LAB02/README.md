@@ -1,7 +1,7 @@
 # LAB 2: Data Preprocessing (House Prices Dataset)
 
-โครงการนี้เป็นส่วนหนึ่งของวิชา **Machine Learning (04-624-201)**  
-ภาควิชาวิศวกรรมคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเทคโนโลยีราชมงคลธัญบุรี
+This project is part of the **Machine Learning (04-624-201)** course  
+Department of Computer Engineering, Faculty of Engineering, Rajamangala University of Technology Thanyaburi
 
 ---
 
@@ -11,38 +11,38 @@ Kaggle Dataset: https://www.kaggle.com/competitions/house-prices-advanced-regres
 
 ---
 
-## วัตถุประสงค์
-1. เพื่อให้นักศึกษาเข้าใจหลักการและความสำคัญของ Data Preprocessing รวมถึงขั้นตอนการตรวจสอบ ทำความสะอาด แปลงรูปแบบ และเตรียมข้อมูลให้มีคุณภาพก่อนนำ Machine Learning ไปใช้งาน
-2. เพื่อให้นักศึกษาสามารถตรวจสอบและวิเคราะห์คุณภาพของข้อมูล เช่น การตรวจสอบข้อมูลที่หายไป (Missing Values), ข้อมูลซ้ำ (Duplicate Data), ข้อมูลผิดปกติ (Outliers) และรูปแบบข้อมูลที่ไม่สอดคล้องกัน (Inconsistent Data) พร้อมเลือกใช้วิธีการแก้ไขได้อย่างเหมาะสม
-3. เพื่อให้นักศึกษาสามารถประยุกต์ใช้เทคนิคการทำ Data Cleaning, Data Transformation, Data Encoding (Label Encoding & One-Hot Encoding), Feature Scaling หรือ Data Normalization ซึ่งเป็นพื้นฐานของการเตรียมข้อมูลให้อยู่ในรูปแบบที่เหมาะสมสำหรับการวิเคราะห์และการพัฒนาแบบจำลอง
-4. เพื่อให้นักศึกษาสามารถโปรแกรมภายใต้กระบวนการ Data Preprocessing ด้วยภาษา Python และไลบรารีที่เกี่ยวข้อง พร้อมตรวจสอบและประเมินคุณภาพข้อมูลก่อนนำไปใช้งานจริง รวมถึงนำเสนอผลงานผ่าน GitHub
+## Objectives
+1. To enable students to understand the principles and importance of Data Preprocessing, including the steps of inspecting, cleaning, transforming, and preparing high-quality data prior to applying Machine Learning.
+2. To enable students to inspect and analyze data quality, such as checking for Missing Values, Duplicate Data, Outliers, and Inconsistent Data, along with selecting appropriate remediation methods.
+3. To enable students to apply techniques such as Data Cleaning, Data Transformation, Data Encoding (Label Encoding & One-Hot Encoding), Feature Scaling, or Data Normalization, which serve as the foundation for preparing data into suitable formats for analysis and model development.
+4. To enable students to program data preprocessing pipelines using Python and relevant libraries, verify and evaluate data quality before real-world deployment, and present their work via GitHub.
 
 ---
 
-## โครงสร้างไฟล์ใน Repository
+## Repository Structure
 ```text
 LAB02/
 │
 ├── house-prices-data/
-│   ├── train.csv                  # ชุดข้อมูลบ้านสำหรับฝึกสอน (Features & SalePrice)
-│   ├── test.csv                   # ชุดข้อมูลบ้านสำหรับทดสอบ
-│   ├── data_description.txt       # คำอธิบายรายละเอียดฟีเจอร์ทุกคอลัมน์
-│   └── sample_submission.csv      # รูปแบบตัวอย่างไฟล์การส่งผลลัพธ์
+│   ├── train.csv                  # Training dataset (Features & SalePrice)
+│   ├── test.csv                   # Testing dataset
+│   ├── data_description.txt       # Full descriptions of all feature columns
+│   └── sample_submission.csv      # Sample submission format
 │
-├── LAB2_code.ipynb                # ไฟล์ Jupyter Notebook หลักที่รวมโค้ดและผลการทดลองทั้งหมด
-└── README.md                      # เอกสารอธิบายและสรุปผลการทดลอง
+├── LAB2_code.ipynb                # Main Jupyter Notebook containing all code and experiment results
+└── README.md                      # Experiment summary and project documentation
 ```
 
 ---
 
-## ผลลัพธ์และข้อสรุป (Results & Insights)
-* **คุณภาพและความสมบูรณ์ของข้อมูล:** การทำความสะอาดข้อมูลและการจัดการค่าว่างอย่างตรงจุดตามความหมายของแต่ละฟีเจอร์ ช่วยป้องกันการสูญเสียข้อมูลสำคัญและลดความคลาดเคลื่อนในการสร้างแบบจำลอง
-* **ความสัมพันธ์ของตัวแปรต่อราคาบ้าน:** คุณภาพโดยรวมของบ้าน (`OverallQual`) และขนาดพื้นที่อยู่อาศัยเหนือพื้นดิน (`GrLivArea`) เป็นปัจจัยที่มีความสัมพันธ์เชิงบวกต่อราคาขายบ้าน (`SalePrice`) มากที่สุด[cite: 17, 18]
-* **ความพร้อมของข้อมูลสำหรับ Machine Learning:** ข้อมูลที่ผ่านกระบวนการ Data Cleaning, จัดการ Missing Values และทำ Encoding ครบถ้วน จะมีโครงสร้างที่เป็นระเบียบ พร้อมสำหรับการนำไปแบ่ง Train/Test และป้อนเข้าสู่โมเดล Regression ต่อไป
+## 📈 Results & Insights
+* **Data Quality & Completeness:** Cleaning data and imputing missing values accurately according to the specific domain context of each feature prevents the loss of critical information and minimizes error during model development.
+* **Feature Correlation with Sale Price:** Overall material and finish quality (`OverallQual`) and above-ground living area (`GrLivArea`) are the primary factors showing the strongest positive correlation with house prices (`SalePrice`).
+* **Data Readiness for Machine Learning:** Datasets processed through comprehensive Data Cleaning, missing value imputation, and categorical encoding are well-structured and ready for train/test splitting and feeding into subsequent regression models.
 
 ---
 
-## จัดทำโดย
-* **ชื่อ-นามสกุล:** วิชยุตม์ แก้ววิเศษ
-* **รหัสนักศึกษา:** 116710400582-8
-* **ภาควิชา:** วิศวกรรมคอมพิวเตอร์
+## 👤 Prepared by
+* **Full Name:** Wichayut Kaewwiset
+* **Student ID:** 116710400582-8
+* **Department:** Computer Engineering
