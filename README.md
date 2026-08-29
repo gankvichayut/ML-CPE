@@ -77,7 +77,7 @@ Fundamental concepts of machine learning, supervised and unsupervised learning, 
 ---
 
 ## Author Information
-* **Name:** นายวิชยุตม์ แก้ววิเศษ (Mr. vichayut Kaewwiset)
+* **Name:** นายวิชยุตม์ แก้ววิเศษ (Mr. Vichayut Kaewwiset)
 * **Student ID:** 116710400582-8
 * **Department:** ภาควิชาวิศวกรรมคอมพิวเตอร์ (Department of Computer Engineering)
 * **Faculty:** คณะวิศวกรรมศาสตร์ (Faculty of Engineering)
