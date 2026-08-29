@@ -1,7 +1,7 @@
 # LAB 4: K-Nearest Neighbors (KNN) & Clustering (Heart Disease Dataset)
 
-งานนี้เป็นส่วนหนึ่งของวิชา **Machine Learning (04-624-201)**  
-ภาควิชาวิศวกรรมคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเทคโนโลยีราชมงคลธัญบุรี
+This project is part of the **Machine Learning (04-624-201)** course  
+Department of Computer Engineering, Faculty of Engineering, Rajamangala University of Technology Thanyaburi
 
 ---
 
@@ -11,57 +11,57 @@ Kaggle Dataset: https://www.kaggle.com/datasets/utkarshx27/heart-disease-diagnos
 
 ---
 
-## วัตถุประสงค์
-1. เพื่อประยุกต์ใช้อัลกอริทึม K-Nearest Neighbors (KNN) ในการจำแนกประเภทข้อมูลทางการแพทย์ (Classification)
-2. เพื่อเปรียบเทียบประสิทธิภาพของโมเดลเมื่อปรับเปลี่ยนจำนวนเพื่อนบ้าน (k values)
-3. เพื่อจัดกลุ่มข้อมูลผู้ป่วยด้วย K-Means Clustering โดยใช้ Elbow Method และ Silhouette Score (Clustering)
-4. เพื่อศึกษาความสำคัญของการทำ Feature Standardization ต่อโมเดลที่อาศัยระยะทาง (Distance-based Algorithms)
+## Objectives
+1. To apply the K-Nearest Neighbors (KNN) algorithm for medical data classification (Classification).
+2. To compare model performance when tuning the number of neighbors (k values).
+3. To group patient data using K-Means Clustering evaluated via the Elbow Method and Silhouette Score (Clustering).
+4. To study the importance of Feature Standardization on distance-based algorithms.
 
 ---
 
-## โครงสร้างไฟล์ใน Repository
+## Repository Structure
 ```text
 LAB04/
 │
 ├── classification/
-│   ├── dataset_heart.csv             # ชุดข้อมูลโรคหัวใจสำหรับงาน Classification
-│   ├── main.py                       # สคริปต์หลักสำหรับเทรนและประเมินผล KNN
-│   ├── data_loader.py                # โหลดข้อมูล แยก Train/Val/Test และทำ Standardization
-│   ├── knn_tf.py                     # คลาสโมเดล KNN บน TensorFlow
-│   ├── evaluate.py                   # ฟังก์ชันวัดผล กราฟ k-curve และ Confusion Matrix
+│   ├── dataset_heart.csv          # Heart disease dataset for Classification tasks
+│   ├── main.py                    # Main script for training and evaluating KNN
+│   ├── data_loader.py             # Loads data, splits Train/Val/Test, and performs Standardization
+│   ├── knn_tf.py                  # KNN model class built on TensorFlow
+│   ├── evaluate.py                # Evaluation functions, k-curve plotting, and Confusion Matrix
 │   └── outputs/
-│       ├── 01_k_curve.png            # กราฟเปรียบเทียบค่า k กับ Validation Accuracy
-│       ├── 02_confusion_matrix.png   # ภาพ Confusion Matrix บน Test Set
-│       └── predictions.csv           # ผลการทำนายเทียบกับค่าจริง
+│       ├── 01_k_curve.png         # Validation Accuracy vs. k-value plot
+│       ├── 02_confusion_matrix.png # Confusion Matrix on the Test Set
+│       └── predictions.csv        # Prediction results compared against ground truth
 │
 ├── clustering/
-│   ├── dataset_heart.csv             # ชุดข้อมูลโรคหัวใจสำหรับงาน Clustering
-│   ├── main.py                       # สคริปต์หลักสำหรับรัน K-Means และจับคู่กลุ่มด้วย KNN
-│   ├── data_loader.py                # โหลดข้อมูลและทำ Standardization เฉพาะ Features
-│   ├── kmeans_tf.py                  # คลาส K-Means Clustering บน TensorFlow
-│   ├── knn_tools.py                  # คลาส KNN สำหรับกำหนด Cluster ให้ข้อมูลใหม่
-│   ├── visualize.py                  # ฟังก์ชันพล็อต Elbow Curve และ Scatter Plot
+│   ├── dataset_heart.csv          # Heart disease dataset for Clustering tasks
+│   ├── main.py                    # Main script for running K-Means and KNN cluster assignment
+│   ├── data_loader.py             # Loads data and applies Standardization to features only
+│   ├── kmeans_tf.py               # K-Means Clustering class built on TensorFlow
+│   ├── knn_tools.py               # KNN class for assigning clusters to new incoming data
+│   ├── visualize.py               # Visualization functions for Elbow Curve and Scatter Plots
 │   └── outputs/
-│       ├── 01_elbow.png              # กราฟ Elbow Method หาค่า k ที่เหมาะสม
-│       ├── 02_clusters.png           # กราฟกระจายตัวของ Cluster (Age vs Max Heart Rate)
-│       ├── cluster_summary.csv       # สรุปค่าเฉลี่ยสถิติของแต่ละ Cluster
-│       └── clustered_heart_data.csv  # ข้อมูลพร้อมระบุ Cluster ของผู้ป่วยแต่ละคน
+│       ├── 01_elbow.png           # Elbow Method curve for optimal k selection
+│       ├── 02_clusters.png        # Cluster scatter plot (Age vs. Max Heart Rate)
+│       ├── cluster_summary.csv    # Statistical summary of mean values per cluster
+│       └── clustered_heart_data.csv # Dataset with assigned cluster labels for each patient
 │
-└── README.md                         # เอกสารอธิบายโครงการ
+└── README.md                      # Project documentation and experiment summary
 ```
 
 ---
 
-## ผลลัพธ์และข้อสรุป (Results & Insights)
-* **ประสิทธิภาพโมเดล KNN Classification:** โมเดลทำนายบน Test Set ได้ค่าความแม่นยำ (Accuracy) อยู่ที่ **79.63%** ซึ่งสูงกว่าการสุ่มเดาตามคลาสเสียงข้างมาก (Baseline Guessing)
-* **การจัดกลุ่ม K-Means Clustering:** 
-  * **Cluster 0 (เสี่ยงต่ำ):** อายุเฉลี่ย 52 ปี, อัตราการเต้นหัวใจสูงสุดเฉลี่ย 159.9 bpm, มีอาการเจ็บหน้าอกขณะออกกำลังกายเพียง 11.9% (ตรงกับกลุ่มไม่พบโรคจริง 81.5%)
-  * **Cluster 1 (เสี่ยงสูง):** อายุเฉลี่ย 58.4 ปี, อัตราการเต้นหัวใจสูงสุดเฉลี่ย 132.8 bpm, มีอาการเจ็บหน้าอกขณะออกกำลังกายสูงถึง 67.6% (ตรงกับกลุ่มตรวจพบโรคจริง 87.3%)
-* **ความสำคัญของ Feature Standardization:** เนื่องจากตัวแปรทางการแพทย์มีหน่วยและช่วงสเกลต่างกันมาก การ Standardize ช่วยป้องกันไม่ให้ตัวแปรที่มีค่ามากครอบงำผลการคำนวณระยะทาง Euclidean Distance
+## Results & Insights
+* **KNN Classification Performance:** The model achieved a Test Set Accuracy of **79.63%**, significantly outperforming majority-class baseline guessing.
+* **K-Means Clustering Analysis:**
+  * **Cluster 0 (Low Risk):** Average age of 52 years, mean maximum heart rate of 159.9 bpm, exercise-induced angina in only 11.9% of cases (corresponding to 81.5% actual negative diagnoses).
+  * **Cluster 1 (High Risk):** Average age of 58.4 years, mean maximum heart rate of 132.8 bpm, exercise-induced angina in 67.6% of cases (corresponding to 87.3% actual positive diagnoses).
+* **Importance of Feature Standardization:** Because medical variables vary widely in units and numerical ranges, standardization prevents high-magnitude features from dominating Euclidean distance calculations.
 
 ---
 
-## จัดทำโดย
-* **ชื่อ-นามสกุล:** วิชยุตม์ แก้ววิเศษ
-* **รหัสนักศึกษา:** 116710400582-8
-* **ภาควิชา:** วิศวกรรมคอมพิวเตอร์
+## Prepared by
+* **Full Name:** Vichayut Kaewwiset
+* **Student ID:** 116710400582-8
+* **Department:** Computer Engineering
