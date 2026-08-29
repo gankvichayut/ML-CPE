@@ -24,7 +24,7 @@ Kaggle Dataset: https://www.kaggle.com/datasets/drgfreeman/rockpaperscissors/
 ```text
 LAB06/
 │
-├── rps-cv-images/                 # โฟลเดอร์ชุดข้อมูลภาพเป่ายิ้งฉุบ (Raw Image Dataset)
+├── rps-cv-images/                 # โฟลเดอร์ชุดข้อมูลภาพเป่ายิ้งฉุบ (Raw Image Dataset) (ดาวโหลดจากลิงก์ Kaggle)
 │   ├── paper/                     # ภาพคลาสกระดาษ (Paper)
 │   ├── rock/                      # ภาพคลาสค้อน (Rock)
 │   ├── scissors/                  # ภาพคลาสกรรไกร (Scissors)
