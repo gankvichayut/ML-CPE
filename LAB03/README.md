@@ -24,7 +24,7 @@ Kaggle Dataset: https://www.kaggle.com/datasets/nipunarora8/age-gender-and-ethni
 ```text
 ML-03-Regression-Classification/
 │
-├── age_gender.csv          # ชุดข้อมูลภาพใบหน้า UTKFace (Features & Labels)
+├── age_gender.csv          # ชุดข้อมูลภาพใบหน้า UTKFace (Features & Labels) (ดาวโหลดจากลิงก์ Kaggle)
 ├── LAB3_code.ipynb         # ไฟล์ Jupyter Notebook หลักที่รวมโค้ดและผลการทดลองทั้งหมด  
 └── README.md               # เอกสารอธิบายและสรุปผลการทดลอง
 ```
