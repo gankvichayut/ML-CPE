@@ -24,34 +24,34 @@ Kaggle Dataset: https://www.kaggle.com/datasets/drgfreeman/rockpaperscissors/
 ```text
 LAB06/
 │
-├── rps-cv-images/                 # โฟลเดอร์ชุดข้อมูลภาพเป่ายิ้งฉุบ (Raw Image Dataset) (ดาวโหลดจากลิงก์ Kaggle)
-│   ├── paper/                     # ภาพคลาสกระดาษ (Paper)
-│   ├── rock/                      # ภาพคลาสค้อน (Rock)
-│   ├── scissors/                  # ภาพคลาสกรรไกร (Scissors)
-│   └── README_rpc-cv-images.txt   # คำอธิบายชุดข้อมูลภาพ
+├── rps-cv-images/                                 # โฟลเดอร์ชุดข้อมูลภาพเป่ายิ้งฉุบ (Raw Image Dataset) (ดาวโหลดจากลิงก์ Kaggle)
+│   ├── paper/                                     # ภาพคลาสกระดาษ (Paper)
+│   ├── rock/                                      # ภาพคลาสค้อน (Rock)
+│   ├── scissors/                                  # ภาพคลาสกรรไกร (Scissors)
+│   └── README_rpc-cv-images.txt                   # คำอธิบายชุดข้อมูลภาพ
 │
 ├── mini-project/
-│   ├── data_loader.py             # สคริปต์โหลดรูปภาพจากโฟลเดอร์คลาสและแปลงเป็นอาร์เรย์
-│   ├── preprocessing.py           # ฟังก์ชัน Resize ภาพ (64x64) และจัดการรูปแบบสี RGB
-│   ├── split_data.py              # แบ่งข้อมูล Train (70%), Validation (10%), Test (20%) แบบ Stratified
-│   ├── nn_model.py                # สถาปัตยกรรมโมเดล Sequential MLP, การ Rescaling และกระบวนการ Fit
-│   ├── evaluate.py                # ฟังก์ชันคำนวณ Metrics, วาด Confusion Matrix และกราฟ History Curves
-│   ├── main.py                    # สคริปต์หลักรัน Pipeline การเทรนและบันทึกโมเดลทั้งหมด
-│   ├── test_nn.py                 # สคริปต์สุ่มรูปภาพ 4 ภาพมาทดสอบพยากรณ์และแสดงผลกริด 2x2
+│   ├── data_loader.py                             # สคริปต์โหลดรูปภาพจากโฟลเดอร์คลาสและแปลงเป็นอาร์เรย์
+│   ├── preprocessing.py                           # ฟังก์ชัน Resize ภาพ (64x64) และจัดการรูปแบบสี RGB
+│   ├── split_data.py                              # แบ่งข้อมูล Train (70%), Validation (10%), Test (20%) แบบ Stratified
+│   ├── nn_model.py                                # สถาปัตยกรรมโมเดล Sequential MLP, การ Rescaling และกระบวนการ Fit
+│   ├── evaluate.py                                # ฟังก์ชันคำนวณ Metrics, วาด Confusion Matrix และกราฟ History Curves
+│   ├── main.py                                    # สคริปต์หลักรัน Pipeline การเทรนและบันทึกโมเดลทั้งหมด
+│   ├── test_nn.py                                 # สคริปต์สุ่มรูปภาพ 4 ภาพมาทดสอบพยากรณ์และแสดงผลกริด 2x2
 │   │
-│   └── outputs/                   # โฟลเดอร์เก็บผลลัพธ์และโมเดลที่บันทึก
-│       ├── classes.json           # รายชื่อคลาส ['paper', 'rock', 'scissors']
-│       ├── history.json           # ประวัติค่า Loss และ Accuracy ในแต่ละ Epoch
-│       ├── features.npy           # ข้อมูล Features ทั้งหมดในรูป NumPy Array
-│       ├── labels.npy             # ข้อมูล Labels ทั้งหมด
-│       ├── X_train.npy / X_val.npy / X_test.npy # ข้อมูลแบ่งชุดรูปภาพ
-│       ├── y_train.npy / y_val.npy / y_test.npy # ข้อมูลแบ่งชุด Label
-│       ├── nn_model.keras         # โมเดล Neural Network ที่บันทึกในรูปแบบ Keras
-│       ├── confusion_matrix.png   # ภาพแผนภูมิความร้อน Confusion Matrix
-│       ├── training_history.png   # กราฟเปรียบเทียบ Training & Validation (Loss / Accuracy)
-│       └── prediction_sample.png  # ผลการสุ่มทดสอบพยากรณ์ภาพ 4 ตัวอย่าง
+│   └── outputs/                                   # โฟลเดอร์เก็บผลลัพธ์และโมเดลที่บันทึก
+│       ├── classes.json                           # รายชื่อคลาส ['paper', 'rock', 'scissors']
+│       ├── history.json                           # ประวัติค่า Loss และ Accuracy ในแต่ละ Epoch
+│       ├── features.npy                           # ข้อมูล Features ทั้งหมดในรูป NumPy Array
+│       ├── labels.npy                             # ข้อมูล Labels ทั้งหมด
+│       ├── X_train.npy / X_val.npy / X_test.npy   # ข้อมูลแบ่งชุดรูปภาพ
+│       ├── y_train.npy / y_val.npy / y_test.npy   # ข้อมูลแบ่งชุด Label
+│       ├── nn_model.keras                         # โมเดล Neural Network ที่บันทึกในรูปแบบ Keras
+│       ├── confusion_matrix.png                   # ภาพแผนภูมิความร้อน Confusion Matrix
+│       ├── training_history.png                   # กราฟเปรียบเทียบ Training & Validation (Loss / Accuracy)
+│       └── prediction_sample.png                  # ผลการสุ่มทดสอบพยากรณ์ภาพ 4 ตัวอย่าง
 │
-└── README.md                      # เอกสารสรุปและอธิบายผลการทดลอง
+└── README.md                                      # เอกสารสรุปและอธิบายผลการทดลอง
 ```
 
 ---
