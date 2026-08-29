@@ -1,4 +1,4 @@
-# LAB 5: Support Vector Machine (SVM) on Breast Cancer Dataset
+# LAB 5: Support Vector Machine (SVM) (Breast Cancer Dataset)
 
 This project is part of the **Machine Learning (04-624-201)** course  
 Department of Computer Engineering, Faculty of Engineering, Rajamangala University of Technology Thanyaburi
