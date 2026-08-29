@@ -1,6 +1,6 @@
 
 
-# LAB 5: Support Vector Machine (SVM) on Breast Cancer Dataset
+# LAB 5: Support Vector Machine (SVM) (Breast Cancer Dataset)
 
 โครงการนี้เป็นส่วนหนึ่งของวิชา **Machine Learning (04-624-201)**  
 ภาควิชาวิศวกรรมคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเทคโนโลยีราชมงคลธัญบุรี
