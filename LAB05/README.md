@@ -38,16 +38,7 @@ LAB05/
 │   ├── svm_model.py               # สร้างและฝึกสอนแบบจำลอง Support Vector Classifier (SVC)
 │   ├── evaluate.py                # ประเมินประสิทธิภาพและสร้างภาพ Confusion Matrix
 │   └── outputs/
-│       ├── classes.json           # รายชื่อคลาสเป้าหมาย ['Benign', 'Malignant']
-│       ├── X_train.npy            # ข้อมูล Features ชุดฝึกสอนที่ผ่านการ Scale แล้ว
-│       ├── X_test.npy             # ข้อมูล Features ชุดทดสอบที่ผ่านการ Scale แล้ว
-│       ├── y_train.npy            # ข้อมูล Target Labels ชุดฝึกสอน
-│       ├── y_test.npy             # ข้อมูล Target Labels ชุดทดสอบ
-│       ├── scaler.pkl             # ตัวแปลง StandardScaler ที่ผ่านการ Fit แล้ว
-│       ├── svm_model.pkl          # แบบจำลอง SVM เคอร์เนลที่ให้ความแม่นยำสูงสุด (Best Model)
-│       ├── confusion_matrix_linear.png # แผนภาพ Confusion Matrix ของ Linear Kernel
-│       ├── confusion_matrix_poly.png   # แผนภาพ Confusion Matrix ของ Polynomial Kernel
-│       └── confusion_matrix_rbf.png    # แผนภาพ Confusion Matrix ของ RBF Kernel
+│       ├── . . .
 │
 └── README.md                      # เอกสารอธิบายและสรุปผลการทดลอง
 ```
