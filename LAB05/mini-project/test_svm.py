@@ -6,8 +6,9 @@ OUTPUT_DIR = "outputs"
 
 def test_svm(n_samples=5):
     model = joblib.load(f"{OUTPUT_DIR}/svm_model.pkl")
-    X_test = np.load(f"{OUTPUT_DIR}/X_test.npy")
-    y_test = np.load(f"{OUTPUT_DIR}/y_test.npy")
+    X_test = np.load(f"{OUTPUT_DIR}/X_test.npy", allow_pickle=True)
+    y_test = np.load(f"{OUTPUT_DIR}/y_test.npy", allow_pickle=True)
+    
     with open(f"{OUTPUT_DIR}/classes.json") as f:
         classes = json.load(f)
 
@@ -20,9 +21,14 @@ def test_svm(n_samples=5):
 
     print("\n--- Test Predictions Sample ---")
     for i in range(n_samples):
-        pred_label = classes[predictions[i]]
-        true_label = classes[y_sample[i]]
-        status = "OK" if predictions[i] == y_sample[i] else "WRONG"
+        # รองรับทั้งกรณีที่คืนค่ามาเป็นตัวอักษร 'B'/'M' หรือตัวเลข 0/1
+        pred = predictions[i]
+        true = y_sample[i]
+
+        pred_label = classes[int(pred)] if str(pred).isdigit() else str(pred)
+        true_label = classes[int(true)] if str(true).isdigit() else str(true)
+
+        status = "OK" if pred == true else "WRONG"
         print(f"Sample [{i+1}] -> Predicted: {pred_label:<10} | True: {true_label:<10} [{status}]")
 
 if __name__ == "__main__":
