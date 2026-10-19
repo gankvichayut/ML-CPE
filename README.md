@@ -5,7 +5,7 @@ This repository contains all laboratory assignments, source code, datasets, mode
 ---
 
 ## Course Description
-Fundamental concepts of machine learning, supervised and unsupervised learning, data preprocessing, feature engineering, classification, clustering, regression models, K-nearest neighbors (KNN), support vector machines (SVM), artificial neural networks (ANN/MLP), and evaluation metrics. The repository focuses on hands-on practical implementations using Python and modern data science / deep learning frameworks.
+Fundamental concepts of machine learning, supervised and unsupervised learning, data preprocessing, feature engineering, classification, clustering, regression models, K-nearest neighbors (KNN), support vector machines (SVM), artificial neural networks (ANN/MLP), convolutional neural networks (CNN/DCNN), regional CNN object detection (R-CNN / Fast R-CNN), and real-time single-stage object detection (YOLOv8) with comprehensive evaluation metrics. The repository focuses on hands-on practical implementations using Python, PyTorch, TensorFlow/Keras, and modern data science / deep learning frameworks.
 
 ---
 
@@ -66,13 +66,57 @@ Fundamental concepts of machine learning, supervised and unsupervised learning, 
 
 ---
 
+### 🔹 [LAB 07: Convolutional Neural Networks (CNN)](./LAB07)
+* **Topic:** Deep Learning & Custom CNN Architectures for Image Recognition
+* **Dataset:** Rock-Paper-Scissors Computer Vision Dataset (`rps-cv-images`)
+* **Key Contents:**
+  * Computer vision preprocessing, spatial resizing ($100 \times 100 \times 3$), and in-pipeline Data Augmentation (Random Flip, Rotation)
+  * Architecture exploration across multiple Conv2D layers (1 to 4 stages), MaxPooling, Batch Normalization, and Dropout
+  * Comparative benchmark analyzing Convergence Rates, Validation Accuracy, and Epoch impact
+  * Model persistence (`cnn_model.keras`), Confusion Matrix generation, and $2 \times 2$ sample inference with confidence scores
+
+---
+
+### 🔹 [LAB 08: Deep CNN (VGG Architecture)](./ML-08-DCNN)
+* **Topic:** Deep VGG-Style Convolutional Neural Networks & Feature Extraction
+* **Dataset:** Rock-Paper-Scissors Computer Vision Dataset (`rps-cv-images`)
+* **Key Contents:**
+  * Implementation of deep VGG-based network blocks using small $3 \times 3$ convolutional filters stacked with Batch Normalization
+  * Preprocessing with $50 \times 50 \times 3$ resizing and Global Average Pooling (GAP) replacing classical Dense flattening
+  * Training control over 50 epochs utilizing `EarlyStopping` and `ReduceLROnPlateau`
+  * Evaluation via Test Accuracy, Classification Report, Confusion Matrix, and random grid inference
+
+---
+
+### 🔹 [LAB 09: Object Detection I (R-CNN & Fast R-CNN)](./ML-09-Object20l)
+* **Topic:** Two-Stage Region-Based Object Detection Baselines
+* **Dataset:** Berkeley DeepDrive (BDD100K) in YOLO Annotation Format (10 road-object classes)
+* **Key Contents:**
+  * Educational implementations comparing **R-CNN** and **Fast R-CNN** architectures
+  * Preprocessing pipeline converting YOLO normalized coordinates to regional image crops
+  * Modular training pipelines (`train.py`, `evaluate.py`, `image_test.py`, `realtime_test.py`)
+  * Model evaluation, visual prediction bounding box overlay, and live webcam stream detection
+
+---
+
+### 🔹 [LAB 10: Object Detection II (Ultralytics YOLOv8)](./ML-10-Object20II)
+* **Topic:** Modern Single-Stage Real-time Object Detection with YOLOv8
+* **Dataset:** Berkeley DeepDrive (BDD100K) Dataset (`data.yaml`, 10 road-object classes)
+* **Key Contents:**
+  * Fine-tuning **Ultralytics YOLOv8n** pretrained weights on road-scene detection
+  * GPU-accelerated training pipeline with PyTorch CUDA and mixed precision (AMP)
+  * Comprehensive performance validation using Precision, Recall, mAP50, and mAP50-95 metrics
+  * Multi-image inference batch testing with confidence scoring and real-time webcam detection (`realtime_test.py`)
+
+---
+
 ## Tech Stack & Dependencies
-* **Programming Language:** Python 3.13+
-* **Data Processing & Math:** `pandas`, `numpy`
+* **Programming Languages & Runtimes:** Python 3.11+ / Python 3.13
+* **Data Processing & Scientific Computing:** `pandas`, `numpy`
 * **Machine Learning & Preprocessing:** `scikit-learn`
-* **Deep Learning Framework:** `tensorflow` / `keras`
-* **Computer Vision:** `opencv-python` (`cv2`)
-* **Visualization:** `matplotlib`, `seaborn`
+* **Deep Learning Frameworks:** `tensorflow` / `keras`, `torch`, `torchvision`, `ultralytics` (YOLOv8)
+* **Computer Vision & Graphics:** `opencv-python` (`cv2`), `albumentations`
+* **Visualization & Reporting:** `matplotlib`, `seaborn`
 
 ---
 
